@@ -14,10 +14,10 @@ class MainActivity : AppCompatActivity() {
         //Consulta de información a Firebase
         db.collection("Pueblos").document("TN").get().addOnSuccessListener { document ->
             document?.let {
-                val color = document.getString("color")
-                val population = document.getLong("population")
-                Log.d("Firebase", "Popolation: $population")
-                Log.d("Firebase", "Color: $color")
+                val ciudad = document.toObject(Ciudad::class.java)
+                Log.d("Firebase", "Popolation: ${ciudad?.color}")
+                Log.d("Firebase", "Color: ${ciudad?.population}")
+                Log.d("Firebase", "PC: ${ciudad?.pc}")
             }
         }.addOnFailureListener { error ->
             Log.e("FirebaseError", error.toString())
@@ -28,9 +28,13 @@ class MainActivity : AppCompatActivity() {
             .addOnSuccessListener {
                 Log.d("Firebase", "Se guardó correctamente el pueblo")
             }.addOnFailureListener { error ->
-            Log.e("FirebaseError", error.toString())
-        }
+                Log.e("FirebaseError", error.toString())
+            }
     }
 
-    data class Ciudad(val population: Int = 0, val color: String = "")
+    data class Ciudad(
+        val population: Int = 0,
+        val color: String = "",
+        val pc: Int = 0
+    )
 }
