@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "15909888031",
+    "project_id": "blogapp-1ac84",
+    "storage_bucket": "blogapp-1ac84.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:15909888031:android:82c75236f3faadbc6b752a",
+        "android_client_info": {
+          "package_name": "com.patricio.blogapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "15909888031-etfthqlnhg5vi9un6le1llc6ak49qlov.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgw73GfV_l0wnuVseBg8tQcrLReXxwS4g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "15909888031-etfthqlnhg5vi9un6le1llc6ak49qlov.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
