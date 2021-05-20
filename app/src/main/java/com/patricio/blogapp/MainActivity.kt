@@ -12,6 +12,8 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
+import java.io.ByteArrayOutputStream
 
 class MainActivity : AppCompatActivity() {
 
@@ -42,6 +44,30 @@ class MainActivity : AppCompatActivity() {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK){
             val imageBitmat = data?.extras?.get("data") as Bitmap
             imageView.setImageBitmap(imageBitmat)
+            uploadPicture(imageBitmat)
+        }
+    }
+
+    private fun uploadPicture(bitmap: Bitmap){
+        val storageRef = FirebaseStorage.getInstance().reference
+        val imagesRef = storageRef.child("image.jpg")
+        val baos = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+        val data = baos.toByteArray()
+        val uploadTask = imagesRef.putBytes(data)
+
+        uploadTask.continueWithTask{task ->
+            if (!task.isSuccessful){
+                task.exception?.let {exception ->
+                    throw exception
+                }
+            }
+            imagesRef.downloadUrl
+        }.addOnCompleteListener{task ->
+            if (task.isSuccessful){
+                val downloadUrl = task.result.toString()
+                Log.d("Storage", "uploadPictureURL : $downloadUrl")
+            }
         }
     }
 }
