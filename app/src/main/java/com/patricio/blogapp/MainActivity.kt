@@ -67,8 +67,11 @@ class MainActivity : AppCompatActivity() {
         }.addOnCompleteListener{task ->
             if (task.isSuccessful){
                 val downloadUrl = task.result.toString()
+                FirebaseFirestore.getInstance().collection("Pueblos").document("TN").update(mapOf("imageUrl" to downloadUrl))
                 Log.d("Storage", "uploadPictureURL : $downloadUrl")
             }
         }
     }
 }
+
+data class Ciudad(val population: Int = 0, val color: String = "", val pc: Int = 0, val imageUrl: String = "")
