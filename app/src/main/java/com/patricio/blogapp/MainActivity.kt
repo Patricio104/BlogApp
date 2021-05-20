@@ -14,6 +14,7 @@ import android.widget.Toast
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import java.io.ByteArrayOutputStream
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -50,7 +51,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun uploadPicture(bitmap: Bitmap){
         val storageRef = FirebaseStorage.getInstance().reference
-        val imagesRef = storageRef.child("image.jpg")
+        val imagesRef = storageRef.child("imagenes/${UUID.randomUUID()}.jpg")
         val baos = ByteArrayOutputStream()
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
         val data = baos.toByteArray()
