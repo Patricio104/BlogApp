@@ -11,16 +11,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val db = FirebaseFirestore.getInstance()
-        //Consulta de información a Firebase
-        db.collection("Pueblos").document("TN").get().addOnSuccessListener { document ->
-            document?.let {
+        //Consulta de información a Firebase "Tiempo real"
+        db.collection("Pueblos").document("TN").addSnapshotListener{ value, error ->
+            value?.let {document ->
                 val ciudad = document.toObject(Ciudad::class.java)
                 Log.d("Firebase", "Popolation: ${ciudad?.color}")
                 Log.d("Firebase", "Color: ${ciudad?.population}")
                 Log.d("Firebase", "PC: ${ciudad?.pc}")
             }
-        }.addOnFailureListener { error ->
-            Log.e("FirebaseError", error.toString())
         }
 
         // Ingresar información a Firebase
