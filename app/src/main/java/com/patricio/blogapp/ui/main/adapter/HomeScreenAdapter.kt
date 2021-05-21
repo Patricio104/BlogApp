@@ -1,4 +1,4 @@
-package com.patricio.blogapp.ui.home.adapter
+package com.patricio.blogapp.ui.main.adapter
 
 import android.content.Context
 import android.view.LayoutInflater

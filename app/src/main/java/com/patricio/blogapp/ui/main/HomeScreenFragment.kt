@@ -1,23 +1,19 @@
-package com.patricio.blogapp.ui.home
+package com.patricio.blogapp.ui.main
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import com.google.firebase.Timestamp
 import com.patricio.blogapp.R
 import com.patricio.blogapp.core.Resource
-import com.patricio.blogapp.data.model.Post
 import com.patricio.blogapp.data.remote.HomeScreenDataSource
 import com.patricio.blogapp.databinding.FragmentHomeScreenBinding
 import com.patricio.blogapp.domain.HomeScreenRepoImpl
 import com.patricio.blogapp.presentation.HomeScreenViewModel
 import com.patricio.blogapp.presentation.HomeScreenViewModelFactory
-import com.patricio.blogapp.ui.home.adapter.HomeScreenAdapter
+import com.patricio.blogapp.ui.main.adapter.HomeScreenAdapter
 
 
 class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
