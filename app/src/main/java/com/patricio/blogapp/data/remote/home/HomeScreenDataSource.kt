@@ -1,4 +1,4 @@
-package com.patricio.blogapp.data.remote
+package com.patricio.blogapp.data.remote.home
 
 import com.google.firebase.firestore.FirebaseFirestore
 import com.patricio.blogapp.core.Resource

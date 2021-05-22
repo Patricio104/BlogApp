@@ -1,10 +1,10 @@
-package com.patricio.blogapp.presentation
+package com.patricio.blogapp.presentation.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.liveData
 import com.patricio.blogapp.core.Resource
-import com.patricio.blogapp.domain.HomeScreenRepo
+import com.patricio.blogapp.domain.home.HomeScreenRepo
 import kotlinx.coroutines.Dispatchers
 
 class HomeScreenViewModel(private val repo: HomeScreenRepo): ViewModel() {

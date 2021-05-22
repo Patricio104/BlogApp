@@ -8,18 +8,20 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.patricio.blogapp.R
 import com.patricio.blogapp.core.Resource
-import com.patricio.blogapp.data.remote.HomeScreenDataSource
+import com.patricio.blogapp.data.remote.home.HomeScreenDataSource
 import com.patricio.blogapp.databinding.FragmentHomeScreenBinding
-import com.patricio.blogapp.domain.HomeScreenRepoImpl
-import com.patricio.blogapp.presentation.HomeScreenViewModel
-import com.patricio.blogapp.presentation.HomeScreenViewModelFactory
+import com.patricio.blogapp.domain.home.HomeScreenRepoImpl
+import com.patricio.blogapp.presentation.main.HomeScreenViewModel
+import com.patricio.blogapp.presentation.main.HomeScreenViewModelFactory
 import com.patricio.blogapp.ui.main.adapter.HomeScreenAdapter
 
 
 class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
     private lateinit var binding: FragmentHomeScreenBinding
     private val viewModel by viewModels<HomeScreenViewModel> {
-        HomeScreenViewModelFactory(HomeScreenRepoImpl(HomeScreenDataSource()))
+        HomeScreenViewModelFactory(
+            HomeScreenRepoImpl(HomeScreenDataSource())
+        )
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
