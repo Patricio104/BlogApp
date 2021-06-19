@@ -48,6 +48,10 @@ class MainActivity : AppCompatActivity() {
                     binding.bottomNavigationView.hide()
                 }
 
+                R.id.setupProfileFragment -> {
+                    binding.bottomNavigationView.hide()
+                }
+
                 else ->{
                     binding.bottomNavigationView.show()
                 }

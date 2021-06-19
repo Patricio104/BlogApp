@@ -1,12 +1,8 @@
 package com.patricio.blogapp.ui.auth
 
-import android.opengl.Visibility
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -18,7 +14,6 @@ import com.patricio.blogapp.databinding.FragmentRegisterBinding
 import com.patricio.blogapp.domain.auth.AuthRepoImpl
 import com.patricio.blogapp.presentation.auth.AuthViewModel
 import com.patricio.blogapp.presentation.auth.AuthViewModelFactory
-import kotlin.math.sign
 
 class RegisterFragment : Fragment(R.layout.fragment_register) {
     private lateinit var binding: FragmentRegisterBinding
@@ -41,7 +36,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
             val password = binding.editTextPassword.text.toString().trim()
             val confirmPassword = binding.editTextConfirmPassword.text.toString().trim()
 
-            if (validateUserData(password, confirmPassword, email, userName)) return@setOnClickListener
+            if (validateCredentials(password, confirmPassword, email, userName)) return@setOnClickListener
             
             createUser(email, password, userName)
         }
@@ -56,7 +51,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                 }
                 is Result.Success->{
                     binding.progressBar.visibility=View.GONE
-                    findNavController().navigate(R.id.action_registerFragment_to_homeScreenFragment)
+                    findNavController().navigate(R.id.action_registerFragment_to_setupProfileFragment2)
                 }
                 is Result.Failure->{
                     binding.progressBar.visibility=View.GONE
@@ -67,7 +62,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
         })
     }
 
-    private fun validateUserData(
+    private fun validateCredentials(
             password: String,
             confirmPassword: String,
             email: String,
