@@ -49,7 +49,11 @@
         android:id="@+id/cameraFragment"
         android:name="com.patricio.blogapp.ui.camera.CameraFragment"
         android:label="fragment_camera"
-        tools:layout="@layout/fragment_camera" />
+        tools:layout="@layout/fragment_camera" >
+        <action
+            android:id="@+id/action_cameraFragment_to_homeScreenFragment"
+            app:destination="@id/homeScreenFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.patricio.blogapp.ui.profile.ProfileFragment"
